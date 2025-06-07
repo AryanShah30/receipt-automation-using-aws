@@ -1,6 +1,6 @@
 # Receipt Automation with AWS
 
-Built a fully serverless system to automate receipt processing and data extraction using AWS. Users can upload receipts via a Streamlit frontend, triggering backend workflows that extract structured data using Textract and store it in DynamoDB. The system sends real-time email alerts, provides secure file access, and scales cost-effectively with minimal operational overhead. Designed to streamline finance operations like expense tracking and invoice logging.
+A fully serverless system for automated receipt data extraction and storage, built using AWS. Users can upload image or PDF receipts through a Streamlit interface, triggering a backend pipeline powered by AWS Lambda and Amazon Textract to extract structured fields. Parsed data is stored in DynamoDB, with presigned S3 URLs providing secure file access. Real-time email alerts are sent via SES. The architecture is IAM-secured, scalable, and designed for minimal operational overhead—ideal for automating financial workflows such as expense tracking and invoice management.
 
 ---
 
@@ -13,14 +13,14 @@ Built a fully serverless system to automate receipt processing and data extracti
 | OCR Engine   | Amazon Textract          |
 | Storage      | Amazon S3                |
 | Database     | Amazon DynamoDB          |
-| Notification | Amazon SES     |
+| Notification | Amazon SES               |
 | Infra Config | Environment Variables, IAM Roles |
 
 ---
 
 ## Architecture Overview
 
-The system follows an event-driven, serverless architecture using AWS-native services:
+This project follows an event-driven, serverless architecture using AWS-native services:
 
 ![Architecture Diagram](screenshots/architecture.png)
 
@@ -28,13 +28,13 @@ The system follows an event-driven, serverless architecture using AWS-native ser
 
 ## How It Works
 
-1. **User Upload**: A user uploads a receipt (image or PDF) via the Streamlit interface.
-2. **Store in S3**: The file is stored in an S3 bucket under the `incoming/` directory.
-3. **Trigger Lambda**: An S3 event triggers a Lambda function.
-4. **Extract Data with Textract**: Lambda uses Amazon Textract to extract structured data like items, total, and date.
-5. **Save to DynamoDB**: Parsed data is structured and saved to a DynamoDB table.
-6. **Email Notification**: A formatted summary is emailed to a predefined recipient using Amazon SES.
-7. **Frontend Display**: The Streamlit frontend can fetch and display all processed receipts along with presigned S3 URLs for direct viewing.
+1. **User Upload**: Users upload receipts (images or PDFs) via the Streamlit UI.
+2. **Store in S3**: Files are saved to an S3 bucket under the `incoming/` path.
+3. **Trigger Lambda**: An S3 event triggers a Lambda function for processing.
+4. **Extract with Textract**: Lambda calls Textract to extract structured data like vendor, date, and total amount.
+5. **Store in DynamoDB**: The parsed data is cleaned and inserted into a DynamoDB table.
+6. **Send Email**: A summary email is sent to a predefined recipient via Amazon SES.
+7. **Frontend Display**: Users can view processed receipts in the Streamlit UI, with direct access to files via presigned S3 URLs.
 
 ---
 
@@ -55,6 +55,8 @@ The system follows an event-driven, serverless architecture using AWS-native ser
 
 This project is licensed under the [MIT License](LICENSE).
 
+---
+
 ## Contact
 
-For inquiries or suggestions, please reach out through [GitHub Repository](https://github.com/AryanShah30/receipt-automation-using-aws).
+For questions or feedback, feel free to connect via [GitHub Issues](https://github.com/AryanShah30/receipt-automation-using-aws/issues).
