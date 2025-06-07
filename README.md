@@ -1,6 +1,6 @@
 # Receipt Automation with AWS
 
-A fully serverless system for automated receipt data extraction and storage, built using AWS. Users can upload image or PDF receipts through a Streamlit interface, triggering a backend pipeline powered by AWS Lambda and Amazon Textract to extract structured fields. Parsed data is stored in DynamoDB, with presigned S3 URLs providing secure file access. Real-time email alerts are sent via SES. The architecture is IAM-secured, scalable, and designed for minimal operational overhead—ideal for automating financial workflows such as expense tracking and invoice management.
+A fully serverless system for automated receipt data extraction and storage, built using AWS. Users can upload image or PDF receipts through a Streamlit interface, triggering a backend pipeline powered by AWS Lambda and Amazon Textract to extract structured fields. Parsed data is stored in DynamoDB, with presigned S3 URLs providing secure file access. Real-time email alerts are sent via SES. The architecture is IAM-secured, scalable, and designed for minimal operational overhead - ideal for automating financial workflows such as expense tracking and invoice management.
 
 ---
 
